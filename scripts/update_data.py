@@ -78,7 +78,8 @@ def recommendation(score, mos):
     return "تجنب / تخفيض"
 
 def update_one(base):
-symbol = f'{base["code"]}.AB' if base["market"] == "ADX" else f'{base["code"]}.AE'    out = dict(base)
+    symbol = base["symbol"]
+    out = dict(base)
     try:
         t = yf.Ticker(symbol)
         info = t.info or {}
@@ -121,12 +122,8 @@ symbol = f'{base["code"]}.AB' if base["market"] == "ADX" else f'{base["code"]}.A
             "company_name":info.get("longName") or info.get("shortName") or base["name_ar"],
             "data_timestamp": datetime.now(timezone.utc).isoformat()
         })
-        if price is None:
-    out["score"] = None
-    out["recommendation"] = "غير متوفر"
-else:
-    out["score"] = score_stock(out)
-    out["recommendation"] = recommendation(out["score"], mos)
+        out["score"] = score_stock(out)
+        out["recommendation"] = recommendation(out["score"], mos)
     except Exception as e:
         out.update({"status":"error","error":str(e)[:240]})
     return out
