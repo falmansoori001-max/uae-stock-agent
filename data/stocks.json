@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T14:35:22.494939+00:00",
+  "updated_at": "2026-07-31T14:42:43.914052+00:00",
   "source": "Yahoo Finance public market pages via yfinance (unofficial)",
   "note_ar": "شغّل تحديث البيانات من GitHub Actions. قد لا تتوفر بعض المؤشرات أو الرموز.",
   "stocks": [
@@ -29,9 +29,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "مصرف أبوظبي الإسلامي",
-      "data_timestamp": "2026-07-31T14:34:58.029138+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:13.397752+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "ADIB.AB"
     },
     {
       "symbol": "EAND.AE",
@@ -59,9 +60,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إي آند",
-      "data_timestamp": "2026-07-31T14:34:58.989773+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:14.563354+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "EAND.AB"
     },
     {
       "symbol": "ADNOCGAS.AE",
@@ -89,9 +91,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للغاز",
-      "data_timestamp": "2026-07-31T14:34:59.926074+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:15.948782+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "ADNOCGAS.AB"
     },
     {
       "symbol": "ADNOCDRILL.AE",
@@ -119,9 +122,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للحفر",
-      "data_timestamp": "2026-07-31T14:35:00.767804+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:16.993398+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "ADNOCDRILL.AB"
     },
     {
       "symbol": "ADNOCLS.AE",
@@ -149,9 +153,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للإمداد والخدمات",
-      "data_timestamp": "2026-07-31T14:35:01.659770+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:18.212276+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "ADNOCLS.AB"
     },
     {
       "symbol": "ADPORTS.AE",
@@ -179,9 +184,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "مجموعة موانئ أبوظبي",
-      "data_timestamp": "2026-07-31T14:35:02.589229+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:19.409335+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "ADPORTS.AB"
     },
     {
       "symbol": "BOROUGE.AE",
@@ -209,9 +215,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بروج",
-      "data_timestamp": "2026-07-31T14:35:03.471225+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:20.530988+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "BOROUGE.AB"
     },
     {
       "symbol": "BURJEEL.AE",
@@ -239,9 +246,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "برجيل القابضة",
-      "data_timestamp": "2026-07-31T14:35:04.339971+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:21.599048+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "BURJEEL.AB"
     },
     {
       "symbol": "FERTIGLOBE.AE",
@@ -269,9 +277,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "فيرتيغلوب",
-      "data_timestamp": "2026-07-31T14:35:05.186034+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:22.699823+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "FERTIGLOBE.AB"
     },
     {
       "symbol": "LULU.AE",
@@ -299,9 +308,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "لولو للتجزئة",
-      "data_timestamp": "2026-07-31T14:35:06.321324+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:23.752221+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "LULU.AB"
     },
     {
       "symbol": "NMDCENR.AE",
@@ -329,9 +339,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إن إم دي سي إنرجي",
-      "data_timestamp": "2026-07-31T14:35:07.294431+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:24.874932+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "NMDCENR.AB"
     },
     {
       "symbol": "PUREHEALTH.AE",
@@ -359,9 +370,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بيورهيلث",
-      "data_timestamp": "2026-07-31T14:35:08.331026+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:26.061205+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "PUREHEALTH.AB"
     },
     {
       "symbol": "SPACE42.AE",
@@ -389,9 +401,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "سبيس 42",
-      "data_timestamp": "2026-07-31T14:35:09.368757+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:27.382820+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "SPACE42.AB"
     },
     {
       "symbol": "TAQA.AE",
@@ -419,9 +432,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "طاقة",
-      "data_timestamp": "2026-07-31T14:35:10.263582+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:28.585117+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "TAQA.AB"
     },
     {
       "symbol": "DU.AE",
@@ -445,13 +459,14 @@
       "debt_to_assets": null,
       "free_cash_flow": 2231132928.0,
       "dividend_per_share": 0.66,
-      "dividend_yield": 5.41,
+      "dividend_yield": 5.45,
       "fair_value": 12.603427650242763,
       "margin_of_safety": 3.518309959388083,
       "company_name": "Emirates Integrated Telecommunications Company PJSC",
-      "data_timestamp": "2026-07-31T14:35:10.933624+00:00",
+      "data_timestamp": "2026-07-31T14:42:29.483788+00:00",
       "score": 64,
-      "recommendation": "مراقبة"
+      "recommendation": "مراقبة",
+      "yahoo_symbol": "DU.AE"
     },
     {
       "symbol": "ADNOCDIST.AE",
@@ -479,9 +494,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للتوزيع",
-      "data_timestamp": "2026-07-31T14:35:11.816887+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:30.623284+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "ADNOCDIST.AB"
     },
     {
       "symbol": "AGTHIA.AE",
@@ -489,14 +505,14 @@
       "name_ar": "أغذية",
       "market": "ADX",
       "sector": "السلع الاستهلاكية",
-      "status": "partial",
-      "price": null,
+      "status": "ok",
+      "price": 2018008060.0,
       "currency": "AED",
-      "market_cap": null,
+      "market_cap": 1.6772794245269422e+18,
       "eps": null,
-      "book_value_per_share": null,
-      "pe": null,
-      "pb": null,
+      "book_value_per_share": 3.234,
+      "pe": 16816734200.0,
+      "pb": 623997570.0,
       "roe": null,
       "roa": null,
       "current_ratio": null,
@@ -504,14 +520,15 @@
       "total_assets": null,
       "debt_to_assets": null,
       "free_cash_flow": null,
-      "dividend_per_share": null,
+      "dividend_per_share": 0.0,
       "dividend_yield": null,
       "fair_value": null,
       "margin_of_safety": null,
-      "company_name": "أغذية",
-      "data_timestamp": "2026-07-31T14:35:12.777008+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "company_name": "Agthia Group PJSC",
+      "data_timestamp": "2026-07-31T14:42:31.552068+00:00",
+      "score": 5,
+      "recommendation": "تجنب / تخفيض",
+      "yahoo_symbol": "AGTHIA.AB"
     },
     {
       "symbol": "EMSTEEL.AE",
@@ -539,9 +556,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إمستيل",
-      "data_timestamp": "2026-07-31T14:35:13.773752+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:32.661176+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "EMSTEEL.AB"
     },
     {
       "symbol": "AMAN.AE",
@@ -569,9 +587,10 @@
       "fair_value": 0.29773286702694157,
       "margin_of_safety": -28.974675800657305,
       "company_name": "Dubai Islamic Insurance & Reinsurance Co. (Aman) (P.J.S.C)",
-      "data_timestamp": "2026-07-31T14:35:14.354580+00:00",
+      "data_timestamp": "2026-07-31T14:42:33.516744+00:00",
       "score": 37,
-      "recommendation": "تجنب / تخفيض"
+      "recommendation": "تجنب / تخفيض",
+      "yahoo_symbol": "AMAN.AE"
     },
     {
       "symbol": "APEX.AE",
@@ -599,9 +618,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أبيكس للاستثمار",
-      "data_timestamp": "2026-07-31T14:35:15.250760+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:34.554234+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "APEX.AB"
     },
     {
       "symbol": "EMAAR.AE",
@@ -625,13 +645,14 @@
       "debt_to_assets": null,
       "free_cash_flow": 3066737664.0,
       "dividend_per_share": 1.0,
-      "dividend_yield": 9.04,
+      "dividend_yield": 9.11,
       "fair_value": 24.738593144867597,
       "margin_of_safety": 55.535062420143646,
       "company_name": "Emaar Properties PJSC",
-      "data_timestamp": "2026-07-31T14:35:15.873132+00:00",
+      "data_timestamp": "2026-07-31T14:42:35.479042+00:00",
       "score": 84,
-      "recommendation": "شراء تدريجي"
+      "recommendation": "شراء تدريجي",
+      "yahoo_symbol": "EMAAR.AE"
     },
     {
       "symbol": "SALIK.AE",
@@ -655,13 +676,14 @@
       "debt_to_assets": null,
       "free_cash_flow": 1359051136.0,
       "dividend_per_share": 0.24,
-      "dividend_yield": 4.51,
+      "dividend_yield": 4.44,
       "fair_value": 2.9836165463522453,
       "margin_of_safety": -78.3070953438774,
       "company_name": "Salik Company P.J.S.C.",
-      "data_timestamp": "2026-07-31T14:35:16.482640+00:00",
+      "data_timestamp": "2026-07-31T14:42:36.254366+00:00",
       "score": 54,
-      "recommendation": "مراقبة"
+      "recommendation": "مراقبة",
+      "yahoo_symbol": "SALIK.AE"
     },
     {
       "symbol": "EMIRATESNBD.AE",
@@ -669,29 +691,30 @@
       "name_ar": "الإمارات دبي الوطني",
       "market": "DFM",
       "sector": "البنوك",
-      "status": "ok",
-      "price": 30.2,
+      "status": "partial",
+      "price": null,
       "currency": "AED",
-      "market_cap": 190761271296.0,
-      "eps": 3.76,
-      "book_value_per_share": 22.628,
-      "pe": 8.031915,
-      "pb": 1.3346297,
-      "roe": 16.658,
-      "roa": 2.021,
+      "market_cap": null,
+      "eps": null,
+      "book_value_per_share": null,
+      "pe": null,
+      "pb": null,
+      "roe": null,
+      "roa": null,
       "current_ratio": null,
-      "total_debt": 209803001856.0,
+      "total_debt": null,
       "total_assets": null,
       "debt_to_assets": null,
       "free_cash_flow": null,
-      "dividend_per_share": 1.0,
-      "dividend_yield": 3.29,
-      "fair_value": 40.05101444090738,
-      "margin_of_safety": 24.59616710942965,
-      "company_name": "Emirates NBD Bank PJSC",
-      "data_timestamp": "2026-07-31T14:35:17.116187+00:00",
-      "score": 55,
-      "recommendation": "مراقبة"
+      "dividend_per_share": null,
+      "dividend_yield": null,
+      "fair_value": null,
+      "margin_of_safety": null,
+      "company_name": "الإمارات دبي الوطني",
+      "data_timestamp": "2026-07-31T14:42:37.425396+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "ENBD.AE"
     },
     {
       "symbol": "DIB.AE",
@@ -715,13 +738,14 @@
       "debt_to_assets": null,
       "free_cash_flow": null,
       "dividend_per_share": 0.35,
-      "dividend_yield": 4.78,
+      "dividend_yield": 4.74,
       "fair_value": 11.133369047453398,
       "margin_of_safety": 34.70080827274013,
       "company_name": "Dubai Islamic Bank P.J.S.C.",
-      "data_timestamp": "2026-07-31T14:35:17.877170+00:00",
+      "data_timestamp": "2026-07-31T14:42:38.261125+00:00",
       "score": 55,
-      "recommendation": "مراقبة"
+      "recommendation": "مراقبة",
+      "yahoo_symbol": "DIB.AE"
     },
     {
       "symbol": "DEWA.AE",
@@ -749,9 +773,10 @@
       "fair_value": 2.586904729945669,
       "margin_of_safety": -5.918086904481661,
       "company_name": "Dubai Electricity and Water Authority (PJSC)",
-      "data_timestamp": "2026-07-31T14:35:18.466772+00:00",
+      "data_timestamp": "2026-07-31T14:42:39.061849+00:00",
       "score": 48,
-      "recommendation": "تجنب / تخفيض"
+      "recommendation": "تجنب / تخفيض",
+      "yahoo_symbol": "DEWA.AE"
     },
     {
       "symbol": "PARKIN.AE",
@@ -779,9 +804,10 @@
       "fair_value": 2.8214214507238062,
       "margin_of_safety": -96.35492593914925,
       "company_name": "PARKIN COMPANY PJS",
-      "data_timestamp": "2026-07-31T14:35:19.107023+00:00",
+      "data_timestamp": "2026-07-31T14:42:40.127996+00:00",
       "score": 51,
-      "recommendation": "مراقبة"
+      "recommendation": "مراقبة",
+      "yahoo_symbol": "PARKIN.AE"
     },
     {
       "symbol": "ALDAR.AE",
@@ -809,9 +835,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "الدار العقارية",
-      "data_timestamp": "2026-07-31T14:35:20.166695+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:41.315405+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "ALDAR.AB"
     },
     {
       "symbol": "FAB.AE",
@@ -839,9 +866,10 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بنك أبوظبي الأول",
-      "data_timestamp": "2026-07-31T14:35:21.075719+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-07-31T14:42:42.679420+00:00",
+      "score": null,
+      "recommendation": "غير متوفر",
+      "yahoo_symbol": "FAB.AB"
     },
     {
       "symbol": "ADCB.AE",
@@ -849,14 +877,14 @@
       "name_ar": "بنك أبوظبي التجاري",
       "market": "ADX",
       "sector": "البنوك",
-      "status": "partial",
-      "price": null,
+      "status": "ok",
+      "price": 7884740100.0,
       "currency": "AED",
-      "market_cap": null,
+      "market_cap": 9.223372036854776e+18,
       "eps": null,
-      "book_value_per_share": null,
-      "pe": null,
-      "pb": null,
+      "book_value_per_share": 10.249,
+      "pe": 4867123700.0,
+      "pb": 769318020.0,
       "roe": null,
       "roa": null,
       "current_ratio": null,
@@ -864,14 +892,15 @@
       "total_assets": null,
       "debt_to_assets": null,
       "free_cash_flow": null,
-      "dividend_per_share": null,
+      "dividend_per_share": 0.63,
       "dividend_yield": null,
-      "fair_value": null,
-      "margin_of_safety": null,
-      "company_name": "بنك أبوظبي التجاري",
-      "data_timestamp": "2026-07-31T14:35:22.144697+00:00",
-      "score": 0,
-      "recommendation": "تجنب / تخفيض"
+      "fair_value": 12.6,
+      "margin_of_safety": -62577302280.952385,
+      "company_name": "Abu Dhabi Commercial Bank PJSC",
+      "data_timestamp": "2026-07-31T14:42:43.563837+00:00",
+      "score": 5,
+      "recommendation": "تجنب / تخفيض",
+      "yahoo_symbol": "ADCB.AB"
     }
   ]
 }
