@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T14:09:38.296769+00:00",
+  "updated_at": "2026-07-31T14:35:22.494939+00:00",
   "source": "Yahoo Finance public market pages via yfinance (unofficial)",
   "note_ar": "شغّل تحديث البيانات من GitHub Actions. قد لا تتوفر بعض المؤشرات أو الرموز.",
   "stocks": [
@@ -29,7 +29,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "مصرف أبوظبي الإسلامي",
-      "data_timestamp": "2026-07-31T14:09:05.515598+00:00",
+      "data_timestamp": "2026-07-31T14:34:58.029138+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -59,7 +59,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إي آند",
-      "data_timestamp": "2026-07-31T14:09:07.382826+00:00",
+      "data_timestamp": "2026-07-31T14:34:58.989773+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -89,7 +89,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للغاز",
-      "data_timestamp": "2026-07-31T14:09:08.542446+00:00",
+      "data_timestamp": "2026-07-31T14:34:59.926074+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -119,7 +119,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للحفر",
-      "data_timestamp": "2026-07-31T14:09:09.709877+00:00",
+      "data_timestamp": "2026-07-31T14:35:00.767804+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -149,7 +149,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للإمداد والخدمات",
-      "data_timestamp": "2026-07-31T14:09:11.526355+00:00",
+      "data_timestamp": "2026-07-31T14:35:01.659770+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -179,7 +179,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "مجموعة موانئ أبوظبي",
-      "data_timestamp": "2026-07-31T14:09:12.589830+00:00",
+      "data_timestamp": "2026-07-31T14:35:02.589229+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -209,7 +209,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بروج",
-      "data_timestamp": "2026-07-31T14:09:13.743742+00:00",
+      "data_timestamp": "2026-07-31T14:35:03.471225+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -239,7 +239,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "برجيل القابضة",
-      "data_timestamp": "2026-07-31T14:09:14.900394+00:00",
+      "data_timestamp": "2026-07-31T14:35:04.339971+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -269,7 +269,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "فيرتيغلوب",
-      "data_timestamp": "2026-07-31T14:09:16.100339+00:00",
+      "data_timestamp": "2026-07-31T14:35:05.186034+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -299,7 +299,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "لولو للتجزئة",
-      "data_timestamp": "2026-07-31T14:09:17.257508+00:00",
+      "data_timestamp": "2026-07-31T14:35:06.321324+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -329,7 +329,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إن إم دي سي إنرجي",
-      "data_timestamp": "2026-07-31T14:09:19.220168+00:00",
+      "data_timestamp": "2026-07-31T14:35:07.294431+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -359,7 +359,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بيورهيلث",
-      "data_timestamp": "2026-07-31T14:09:21.075406+00:00",
+      "data_timestamp": "2026-07-31T14:35:08.331026+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -389,7 +389,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "سبيس 42",
-      "data_timestamp": "2026-07-31T14:09:22.409387+00:00",
+      "data_timestamp": "2026-07-31T14:35:09.368757+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -419,7 +419,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "طاقة",
-      "data_timestamp": "2026-07-31T14:09:23.403419+00:00",
+      "data_timestamp": "2026-07-31T14:35:10.263582+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -445,11 +445,11 @@
       "debt_to_assets": null,
       "free_cash_flow": 2231132928.0,
       "dividend_per_share": 0.66,
-      "dividend_yield": 5.45,
+      "dividend_yield": 5.41,
       "fair_value": 12.603427650242763,
       "margin_of_safety": 3.518309959388083,
       "company_name": "Emirates Integrated Telecommunications Company PJSC",
-      "data_timestamp": "2026-07-31T14:09:24.145358+00:00",
+      "data_timestamp": "2026-07-31T14:35:10.933624+00:00",
       "score": 64,
       "recommendation": "مراقبة"
     },
@@ -479,7 +479,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للتوزيع",
-      "data_timestamp": "2026-07-31T14:09:25.244190+00:00",
+      "data_timestamp": "2026-07-31T14:35:11.816887+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -509,7 +509,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أغذية",
-      "data_timestamp": "2026-07-31T14:09:26.336440+00:00",
+      "data_timestamp": "2026-07-31T14:35:12.777008+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -539,7 +539,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إمستيل",
-      "data_timestamp": "2026-07-31T14:09:27.450982+00:00",
+      "data_timestamp": "2026-07-31T14:35:13.773752+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -569,7 +569,7 @@
       "fair_value": 0.29773286702694157,
       "margin_of_safety": -28.974675800657305,
       "company_name": "Dubai Islamic Insurance & Reinsurance Co. (Aman) (P.J.S.C)",
-      "data_timestamp": "2026-07-31T14:09:28.222188+00:00",
+      "data_timestamp": "2026-07-31T14:35:14.354580+00:00",
       "score": 37,
       "recommendation": "تجنب / تخفيض"
     },
@@ -599,7 +599,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أبيكس للاستثمار",
-      "data_timestamp": "2026-07-31T14:09:29.436109+00:00",
+      "data_timestamp": "2026-07-31T14:35:15.250760+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -625,11 +625,11 @@
       "debt_to_assets": null,
       "free_cash_flow": 3066737664.0,
       "dividend_per_share": 1.0,
-      "dividend_yield": 9.11,
+      "dividend_yield": 9.04,
       "fair_value": 24.738593144867597,
       "margin_of_safety": 55.535062420143646,
       "company_name": "Emaar Properties PJSC",
-      "data_timestamp": "2026-07-31T14:09:30.223406+00:00",
+      "data_timestamp": "2026-07-31T14:35:15.873132+00:00",
       "score": 84,
       "recommendation": "شراء تدريجي"
     },
@@ -655,11 +655,11 @@
       "debt_to_assets": null,
       "free_cash_flow": 1359051136.0,
       "dividend_per_share": 0.24,
-      "dividend_yield": 4.44,
+      "dividend_yield": 4.51,
       "fair_value": 2.9836165463522453,
       "margin_of_safety": -78.3070953438774,
       "company_name": "Salik Company P.J.S.C.",
-      "data_timestamp": "2026-07-31T14:09:30.927451+00:00",
+      "data_timestamp": "2026-07-31T14:35:16.482640+00:00",
       "score": 54,
       "recommendation": "مراقبة"
     },
@@ -685,11 +685,11 @@
       "debt_to_assets": null,
       "free_cash_flow": null,
       "dividend_per_share": 1.0,
-      "dividend_yield": 3.34,
+      "dividend_yield": 3.29,
       "fair_value": 40.05101444090738,
       "margin_of_safety": 24.59616710942965,
       "company_name": "Emirates NBD Bank PJSC",
-      "data_timestamp": "2026-07-31T14:09:31.832824+00:00",
+      "data_timestamp": "2026-07-31T14:35:17.116187+00:00",
       "score": 55,
       "recommendation": "مراقبة"
     },
@@ -715,11 +715,11 @@
       "debt_to_assets": null,
       "free_cash_flow": null,
       "dividend_per_share": 0.35,
-      "dividend_yield": 4.74,
+      "dividend_yield": 4.78,
       "fair_value": 11.133369047453398,
       "margin_of_safety": 34.70080827274013,
       "company_name": "Dubai Islamic Bank P.J.S.C.",
-      "data_timestamp": "2026-07-31T14:09:32.693417+00:00",
+      "data_timestamp": "2026-07-31T14:35:17.877170+00:00",
       "score": 55,
       "recommendation": "مراقبة"
     },
@@ -749,7 +749,7 @@
       "fair_value": 2.586904729945669,
       "margin_of_safety": -5.918086904481661,
       "company_name": "Dubai Electricity and Water Authority (PJSC)",
-      "data_timestamp": "2026-07-31T14:09:33.729668+00:00",
+      "data_timestamp": "2026-07-31T14:35:18.466772+00:00",
       "score": 48,
       "recommendation": "تجنب / تخفيض"
     },
@@ -779,7 +779,7 @@
       "fair_value": 2.8214214507238062,
       "margin_of_safety": -96.35492593914925,
       "company_name": "PARKIN COMPANY PJS",
-      "data_timestamp": "2026-07-31T14:09:34.589125+00:00",
+      "data_timestamp": "2026-07-31T14:35:19.107023+00:00",
       "score": 51,
       "recommendation": "مراقبة"
     },
@@ -809,7 +809,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "الدار العقارية",
-      "data_timestamp": "2026-07-31T14:09:35.611727+00:00",
+      "data_timestamp": "2026-07-31T14:35:20.166695+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -839,7 +839,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بنك أبوظبي الأول",
-      "data_timestamp": "2026-07-31T14:09:36.745130+00:00",
+      "data_timestamp": "2026-07-31T14:35:21.075719+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     },
@@ -869,7 +869,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بنك أبوظبي التجاري",
-      "data_timestamp": "2026-07-31T14:09:37.946557+00:00",
+      "data_timestamp": "2026-07-31T14:35:22.144697+00:00",
       "score": 0,
       "recommendation": "تجنب / تخفيض"
     }
