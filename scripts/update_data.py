@@ -27,6 +27,42 @@ def clean(value):
 
 
 def first(info, *keys):
+    def validate_market_data(
+    price,
+    pe,
+    pb,
+    roe,
+    roa,
+    dividend_yield,
+    market_cap,
+):
+    errors = []
+
+    # أسعار أسهم الإمارات تكون عادة ضمن نطاق معقول.
+    if price is None:
+        errors.append("السعر غير متوفر")
+    elif not 0.01 <= price <= 500:
+        errors.append("السعر غير منطقي")
+
+    if pe is not None and not 0 < pe <= 200:
+        errors.append("مكرر الأرباح غير منطقي")
+
+    if pb is not None and not 0 < pb <= 50:
+        errors.append("مكرر القيمة الدفترية غير منطقي")
+
+    if roe is not None and not -100 <= roe <= 300:
+        errors.append("ROE غير منطقي")
+
+    if roa is not None and not -50 <= roa <= 100:
+        errors.append("ROA غير منطقي")
+
+    if dividend_yield is not None and not 0 <= dividend_yield <= 30:
+        errors.append("عائد التوزيعات غير منطقي")
+
+    if market_cap is not None and not 1_000_000 <= market_cap <= 2_000_000_000_000:
+        errors.append("القيمة السوقية غير منطقية")
+
+    return errors
     for key in keys:
         value = info.get(key)
         if value is not None:
@@ -99,7 +135,13 @@ def yahoo_symbol(base):
 
 def update_one(base):
     symbol = yahoo_symbol(base)
-    output = dict(base)
+    output = {
+    "symbol": base.get("symbol"),
+    "code": base.get("code"),
+    "name_ar": base.get("name_ar"),
+    "market": base.get("market"),
+    "sector": base.get("sector"),
+}
     output["yahoo_symbol"] = symbol
 
     try:
@@ -153,7 +195,47 @@ def update_one(base):
             if estimated_fair_value not in (None, 0) and price is not None
             else None
         )
+quality_errors = validate_market_data(
+    price=price,
+    pe=pe,
+    pb=pb,
+    roe=roe,
+    roa=roa,
+    dividend_yield=dividend_yield,
+    market_cap=market_cap,
+)
 
+if quality_errors:
+    output.update(
+        {
+            "status": "invalid",
+            "quality_status": "مرفوض",
+            "quality_errors": quality_errors,
+            "price": None,
+            "market_cap": None,
+            "eps": None,
+            "book_value_per_share": None,
+            "pe": None,
+            "pb": None,
+            "roe": None,
+            "roa": None,
+            "current_ratio": None,
+            "total_debt": None,
+            "total_assets": None,
+            "debt_to_assets": None,
+            "free_cash_flow": None,
+            "dividend_per_share": None,
+            "dividend_yield": None,
+            "fair_value": None,
+            "margin_of_safety": None,
+            "score": None,
+            "recommendation": "بيانات غير موثوقة",
+            "company_name": base.get("name_ar"),
+            "data_timestamp": datetime.now(timezone.utc).isoformat(),
+        }
+    )
+
+    return output
         output.update(
             {
                 "status": "ok" if price is not None else "partial",
