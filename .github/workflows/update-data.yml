@@ -3,6 +3,7 @@ name: Update UAE market data
 on:
   workflow_dispatch:
   schedule:
+    # 12:45 UTC = 16:45 UAE, Sunday-Thursday
     - cron: "45 12 * * 0-4"
 
 permissions:
@@ -11,23 +12,18 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: "pip"
-
       - name: Install dependencies
         run: pip install -r requirements.txt
-
       - name: Fetch public market data
         run: python scripts/update_data.py
-
       - name: Commit updated data
         run: |
           git config user.name "uae-stock-agent-bot"
