@@ -1,0 +1,239 @@
+{
+  "updated_at": null,
+  "source": "Yahoo Finance public market pages via yfinance (unofficial)",
+  "note_ar": "شغّل تحديث البيانات من GitHub Actions. قد لا تتوفر بعض المؤشرات أو الرموز.",
+  "stocks": [
+    {
+      "symbol": "ADIB.AE",
+      "code": "ADIB",
+      "name_ar": "مصرف أبوظبي الإسلامي",
+      "market": "ADX",
+      "sector": "البنوك",
+      "status": "pending"
+    },
+    {
+      "symbol": "EAND.AE",
+      "code": "EAND",
+      "name_ar": "إي آند",
+      "market": "ADX",
+      "sector": "الاتصالات",
+      "status": "pending"
+    },
+    {
+      "symbol": "ADNOCGAS.AE",
+      "code": "ADNOCGAS",
+      "name_ar": "أدنوك للغاز",
+      "market": "ADX",
+      "sector": "الطاقة",
+      "status": "pending"
+    },
+    {
+      "symbol": "ADNOCDRILL.AE",
+      "code": "ADNOCDRILL",
+      "name_ar": "أدنوك للحفر",
+      "market": "ADX",
+      "sector": "الطاقة",
+      "status": "pending"
+    },
+    {
+      "symbol": "ADNOCLS.AE",
+      "code": "ADNOCLS",
+      "name_ar": "أدنوك للإمداد والخدمات",
+      "market": "ADX",
+      "sector": "النقل",
+      "status": "pending"
+    },
+    {
+      "symbol": "ADPORTS.AE",
+      "code": "ADPORTS",
+      "name_ar": "مجموعة موانئ أبوظبي",
+      "market": "ADX",
+      "sector": "النقل",
+      "status": "pending"
+    },
+    {
+      "symbol": "BOROUGE.AE",
+      "code": "BOROUGE",
+      "name_ar": "بروج",
+      "market": "ADX",
+      "sector": "الصناعة",
+      "status": "pending"
+    },
+    {
+      "symbol": "BURJEEL.AE",
+      "code": "BURJEEL",
+      "name_ar": "برجيل القابضة",
+      "market": "ADX",
+      "sector": "الرعاية الصحية",
+      "status": "pending"
+    },
+    {
+      "symbol": "FERTIGLOBE.AE",
+      "code": "FERTIGLOBE",
+      "name_ar": "فيرتيغلوب",
+      "market": "ADX",
+      "sector": "الصناعة",
+      "status": "pending"
+    },
+    {
+      "symbol": "LULU.AE",
+      "code": "LULU",
+      "name_ar": "لولو للتجزئة",
+      "market": "ADX",
+      "sector": "التجزئة",
+      "status": "pending"
+    },
+    {
+      "symbol": "NMDCENR.AE",
+      "code": "NMDCENR",
+      "name_ar": "إن إم دي سي إنرجي",
+      "market": "ADX",
+      "sector": "الطاقة",
+      "status": "pending"
+    },
+    {
+      "symbol": "PUREHEALTH.AE",
+      "code": "PUREHEALTH",
+      "name_ar": "بيورهيلث",
+      "market": "ADX",
+      "sector": "الرعاية الصحية",
+      "status": "pending"
+    },
+    {
+      "symbol": "SPACE42.AE",
+      "code": "SPACE42",
+      "name_ar": "سبيس 42",
+      "market": "ADX",
+      "sector": "التكنولوجيا",
+      "status": "pending"
+    },
+    {
+      "symbol": "TAQA.AE",
+      "code": "TAQA",
+      "name_ar": "طاقة",
+      "market": "ADX",
+      "sector": "المرافق",
+      "status": "pending"
+    },
+    {
+      "symbol": "DU.AE",
+      "code": "DU",
+      "name_ar": "دو",
+      "market": "DFM",
+      "sector": "الاتصالات",
+      "status": "pending"
+    },
+    {
+      "symbol": "ADNOCDIST.AE",
+      "code": "ADNOCDIST",
+      "name_ar": "أدنوك للتوزيع",
+      "market": "ADX",
+      "sector": "الطاقة",
+      "status": "pending"
+    },
+    {
+      "symbol": "AGTHIA.AE",
+      "code": "AGTHIA",
+      "name_ar": "أغذية",
+      "market": "ADX",
+      "sector": "السلع الاستهلاكية",
+      "status": "pending"
+    },
+    {
+      "symbol": "EMSTEEL.AE",
+      "code": "EMSTEEL",
+      "name_ar": "إمستيل",
+      "market": "ADX",
+      "sector": "الصناعة",
+      "status": "pending"
+    },
+    {
+      "symbol": "AMAN.AE",
+      "code": "AMAN",
+      "name_ar": "أمان",
+      "market": "DFM",
+      "sector": "التأمين",
+      "status": "pending"
+    },
+    {
+      "symbol": "APEX.AE",
+      "code": "APEX",
+      "name_ar": "أبيكس للاستثمار",
+      "market": "ADX",
+      "sector": "الاستثمار",
+      "status": "pending"
+    },
+    {
+      "symbol": "EMAAR.AE",
+      "code": "EMAAR",
+      "name_ar": "إعمار العقارية",
+      "market": "DFM",
+      "sector": "العقارات",
+      "status": "pending"
+    },
+    {
+      "symbol": "SALIK.AE",
+      "code": "SALIK",
+      "name_ar": "سالك",
+      "market": "DFM",
+      "sector": "النقل",
+      "status": "pending"
+    },
+    {
+      "symbol": "EMIRATESNBD.AE",
+      "code": "ENBD",
+      "name_ar": "الإمارات دبي الوطني",
+      "market": "DFM",
+      "sector": "البنوك",
+      "status": "pending"
+    },
+    {
+      "symbol": "DIB.AE",
+      "code": "DIB",
+      "name_ar": "بنك دبي الإسلامي",
+      "market": "DFM",
+      "sector": "البنوك",
+      "status": "pending"
+    },
+    {
+      "symbol": "DEWA.AE",
+      "code": "DEWA",
+      "name_ar": "ديوا",
+      "market": "DFM",
+      "sector": "المرافق",
+      "status": "pending"
+    },
+    {
+      "symbol": "PARKIN.AE",
+      "code": "PARKIN",
+      "name_ar": "باركن",
+      "market": "DFM",
+      "sector": "النقل",
+      "status": "pending"
+    },
+    {
+      "symbol": "ALDAR.AE",
+      "code": "ALDAR",
+      "name_ar": "الدار العقارية",
+      "market": "ADX",
+      "sector": "العقارات",
+      "status": "pending"
+    },
+    {
+      "symbol": "FAB.AE",
+      "code": "FAB",
+      "name_ar": "بنك أبوظبي الأول",
+      "market": "ADX",
+      "sector": "البنوك",
+      "status": "pending"
+    },
+    {
+      "symbol": "ADCB.AE",
+      "code": "ADCB",
+      "name_ar": "بنك أبوظبي التجاري",
+      "market": "ADX",
+      "sector": "البنوك",
+      "status": "pending"
+    }
+  ]
+}
