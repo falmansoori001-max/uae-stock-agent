@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إضافة البيانات المالية الرسمية - 4 شركات</title>
+<style>
+:root{--bg:#07101d;--card:#111d30;--line:#293b59;--text:#eef5ff;--muted:#9fb1c9;--green:#4de0a1;--yellow:#ffd166;--red:#ff7474;--blue:#72b7ff}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#050b14,#0c1930);font-family:Arial,Tahoma,sans-serif;color:var(--text);padding:24px}
+.wrap{max-width:1180px;margin:auto}
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+h1{margin:0}.note{color:var(--muted);line-height:1.8}.pill{background:#12382e;color:#7ef0bd;padding:8px 13px;border-radius:99px;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}
+.card{background:rgba(17,29,48,.98);border:1px solid var(--line);border-radius:18px;padding:18px}
+.card h2{margin:0 0 4px}.meta{color:var(--muted);font-size:13px;line-height:1.7}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.metric{background:#172640;border:1px solid var(--line);border-radius:12px;padding:11px}
+.k{font-size:11px;color:var(--muted)}.v{font-size:17px;font-weight:bold;margin-top:5px}
+button,a{display:inline-block;border-radius:12px;padding:13px 18px;font-weight:bold;text-decoration:none;font-size:15px;cursor:pointer}
+button{border:0;background:#2ab87f;color:#041b12}.secondary{background:#172640;color:var(--text);border:1px solid var(--line);margin-right:8px}
+#status{margin-top:16px;padding:14px;border-radius:12px;background:#0d1728;color:var(--yellow)}
+.good{color:var(--green)}.warn{color:var(--yellow)}.bad{color:var(--red)}
+@media(max-width:850px){.grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.metrics{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div>
+      <h1>إضافة البيانات المالية الرسمية</h1>
+      <div class="note">مصرف أبوظبي الإسلامي، أدنوك للحفر، أدنوك للغاز، وأدنوك للإمداد والخدمات</div>
+    </div>
+    <div class="pill">Official Financials</div>
+  </div>
+
+  <div class="note" style="margin-top:14px">
+    تستخدم شركات أدنوك بيانات سنوية مدققة لعام 2025. يستخدم مصرف أبوظبي الإسلامي بيانات التسعة أشهر المنتهية في
+    30 سبتمبر 2025، ولذلك تم تحويل ربحية السهم وROE وROA إلى تقدير سنوي مؤقت. يتم أخذ السعر من ملف ADX المخزن
+    في المتصفح، مع استخدام سعر احتياطي عند عدم وجوده.
+  </div>
+
+  <div id="cards" class="grid"></div>
+
+  <button onclick="saveAll()">إضافة بيانات الشركات الأربع</button>
+  <a class="secondary" href="./">فتح وكيل الأسهم</a>
+  <div id="status">لم تتم إضافة البيانات بعد.</div>
+</div>
+
+<script>
+const FX=3.6725;
+
+function fairValue(eps,bvps,dividend){
+  const values=[];
+  if(eps>0&&bvps>0) values.push(Math.sqrt(22.5*eps*bvps));
+  if(eps>0) values.push(eps*15);
+  if(dividend>0) values.push(dividend/0.05);
+  return values.reduce((a,b)=>a+b,0)/values.length;
+}
+
+function scoreNonBank(x,price){
+  const pe=price/x.eps;
+  const pb=price/x.bvps;
+  const dy=x.dividend/price*100;
+  const fv=fairValue(x.eps,x.bvps,x.dividend);
+  const mos=(fv-price)/fv*100;
+  let score=0;
+  score += x.roe>=15?18:x.roe>=10?12:x.roe>0?6:0;
+  score += x.roa>=7?10:x.roa>=3?6:0;
+  score += pe<=15?15:pe<=22?9:3;
+  score += pb<=2?8:pb<=3?5:2;
+  score += x.currentRatio>=1.5?8:x.currentRatio>=1?5:0;
+  score += x.debtToAssets<=35?8:x.debtToAssets<=55?4:0;
+  score += x.fcf>0?8:0;
+  score += dy>=5?8:dy>=3?5:0;
+  score += mos>=20?9:mos>=10?6:mos>=0?3:0;
+  score=Math.min(100,Math.round(score));
+  const rec=score>=85&&mos>=15?'شراء قوي':
+            score>=75&&mos>=5?'شراء تدريجي':
+            score>=65?'احتفاظ':
+            score>=50?'مراقبة':'تجنب / تخفيض';
+  return {pe,pb,dy,fv,mos,score,rec};
+}
+
+function scoreBank(x,price){
+  const pe=price/x.eps;
+  const pb=price/x.bvps;
+  const roe=Math.min(Math.max(x.roe/100,0.12),0.25);
+  const justifiedPB=(roe-0.05)/(0.12-0.05);
+  const fv=((x.eps*13)+(x.bvps*justifiedPB))/2;
+  const mos=(fv-price)/fv*100;
+  let score=0;
+  score += x.roe>=18?25:x.roe>=15?20:x.roe>=10?12:5;
+  score += x.roa>=2?15:x.roa>=1.5?10:x.roa>=1?5:0;
+  score += pe<=12?20:pe<=15?15:pe<=20?8:3;
+  score += pb<=1.5?15:pb<=2?10:pb<=3?5:2;
+  score += x.profitGrowth>=15?12:x.profitGrowth>=8?10:x.profitGrowth>0?5:0;
+  score += x.assetGrowth>=10?5:x.assetGrowth>0?3:0;
+  score += mos>=15?8:mos>=5?5:mos>=0?2:0;
+  score=Math.min(100,Math.round(score));
+  const rec=score>=85&&mos>=15?'شراء قوي':
+            score>=75&&mos>=5?'شراء تدريجي':
+            score>=65?'احتفاظ':
+            score>=50?'مراقبة':'تجنب / تخفيض';
+  return {pe,pb,dy:null,fv,mos,score,rec};
+}
+
+const COMPANIES={
+  ADIB:{
+    code:'ADIB',name:'مصرف أبوظبي الإسلامي',type:'bank',fallbackPrice:21.22,
+    period:'التسعة أشهر المنتهية في 30 سبتمبر 2025 - مرحلي غير مدقق',
+    eps:1.307*4/3,
+    bvps:(29207255000-4754375000)/3632000000,
+    roe:26.9081700985,
+    roa:2.8599685486,
+    profitGrowth:14.3291306552,
+    assetGrowth:19.3990977682,
+    totalAssets:269734257000,
+    totalEquity:30543156000,
+    ordinaryEquity:24452880000,
+    netProfit:5315724000,
+    netProfitAttributable:5016848000,
+    shares:3632000000,
+    dividend:null,
+    currentRatio:null,
+    totalDebt:null,
+    debtToAssets:null,
+    fcf:null,
+    source:'ADX + تقرير ADIB المالي المرحلي 9M 2025'
+  },
+  ADNOCDRILL:{
+    code:'ADNOCDRILL',name:'أدنوك للحفر',type:'company',fallbackPrice:5.82,
+    period:'السنة المنتهية في 31 ديسمبر 2025 - مدقق',
+    eps:0.091*FX,
+    shares:15966777000,
+    totalEquity:4099312000*FX,
+    totalAssets:8101408000*FX,
+    bvps:(4099312000*FX)/15966777000,
+    roe:36.6340345214,
+    roa:18.2605501340,
+    currentRatio:2030216/2057878,
+    totalDebt:(1246057+1220532+35855+11726)*1000*FX,
+    debtToAssets:31.0337412953,
+    fcf:(2522843-850215-9661)*1000*FX,
+    dividend:(1143567000*FX)/15966777000,
+    netProfit:1448781000*FX,
+    source:'ADX + التقرير المتكامل المدقق لأدنوك للحفر 2025'
+  },
+  ADNOCGAS:{
+    code:'ADNOCGAS',name:'أدنوك للغاز',type:'company',fallbackPrice:3.30,
+    period:'السنة المنتهية في 31 ديسمبر 2025 - مدقق',
+    eps:0.067*FX,
+    shares:76751422012,
+    totalEquity:24704246000*FX,
+    totalAssets:32467014000*FX,
+    bvps:(24704246000*FX)/76751422012,
+    roe:21.2278746861,
+    roa:16.3234374927,
+    currentRatio:6489802/4415611,
+    totalDebt:(18003+9900)*1000*FX,
+    debtToAssets:0.0859426124,
+    fcf:(5928959-2892447-326758)*1000*FX,
+    dividend:(4393797000*FX)/76751422012,
+    netProfit:5165760000*FX,
+    source:'ADX + التقرير المتكامل المدقق لأدنوك للغاز 2025'
+  },
+  ADNOCLS:{
+    code:'ADNOCLS',name:'أدنوك للإمداد والخدمات',type:'company',fallbackPrice:6.20,
+    period:'السنة المنتهية في 31 ديسمبر 2025 - مدقق',
+    eps:0.11*FX,
+    shares:7398498764,
+    totalEquity:7225118000*FX,
+    ordinaryEquity:4981987000*FX,
+    totalAssets:9965153000*FX,
+    bvps:(4981987000*FX)/7398498764,
+    roe:16.9803335435,
+    roa:10.1699981477,
+    currentRatio:1969209/1896586,
+    totalDebt:(328795+400000+79931+141150+82003)*1000*FX,
+    debtToAssets:10.3548736281,
+    fcf:(1370729-1106529-54)*1000*FX,
+    dividend:(380250000*FX)/7398498764,
+    netProfit:862847000*FX,
+    netProfitAttributable:838541000*FX,
+    source:'ADX + التقرير السنوي المدقق لأدنوك للإمداد والخدمات 2025'
+  }
+};
+
+function readMap(){
+  try{return JSON.parse(localStorage.getItem('uaeOfficialMarketData')||'{}')}
+  catch{return {}}
+}
+function getPrice(code,fallback){
+  const p=Number(readMap()[code]?.price);
+  return Number.isFinite(p)&&p>0?p:fallback;
+}
+function format(v,d=2){
+  if(v===null||v===undefined||Number.isNaN(Number(v)))return '—';
+  return Number(v).toLocaleString('en-US',{maximumFractionDigits:d});
+}
+function pct(v){return v===null||v===undefined?'—':format(v,2)+'%';}
+
+function calculated(company){
+  const price=getPrice(company.code,company.fallbackPrice);
+  const calc=company.type==='bank'?scoreBank(company,price):scoreNonBank(company,price);
+  return {...calc,price};
+}
+
+function renderCards(){
+  const holder=document.getElementById('cards');
+  holder.innerHTML=Object.values(COMPANIES).map(c=>{
+    const d=calculated(c);
+    return `<div class="card">
+      <h2>${c.name} <span style="font-size:13px;color:var(--blue)">${c.code}</span></h2>
+      <div class="meta">${c.period}</div>
+      <div class="metrics">
+        <div class="metric"><div class="k">السعر المستخدم</div><div class="v">${format(d.price,4)} درهم</div></div>
+        <div class="metric"><div class="k">ربحية السهم</div><div class="v">${format(c.eps,4)} درهم</div></div>
+        <div class="metric"><div class="k">القيمة الدفترية</div><div class="v">${format(c.bvps,4)} درهم</div></div>
+        <div class="metric"><div class="k">ROE</div><div class="v">${pct(c.roe)}</div></div>
+        <div class="metric"><div class="k">القيمة العادلة النموذجية</div><div class="v">${format(d.fv,4)} درهم</div></div>
+        <div class="metric"><div class="k">الدرجة والتوصية</div><div class="v">${d.score}/100 - ${d.rec}</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function saveAll(){
+  const map=readMap();
+
+  for(const c of Object.values(COMPANIES)){
+    const previous=map[c.code]||{};
+    const d=calculated(c);
+    map[c.code]={
+      ...previous,
+      code:c.code,
+      market:'ADX',
+      price:d.price,
+      eps:c.eps,
+      book_value_per_share:c.bvps,
+      pe:d.pe,
+      pb:d.pb,
+      roe:c.roe,
+      roa:c.roa,
+      current_ratio:c.currentRatio,
+      total_debt:c.totalDebt,
+      total_assets:c.totalAssets,
+      debt_to_assets:c.debtToAssets,
+      free_cash_flow:c.fcf,
+      dividend_per_share:c.dividend,
+      dividend_yield:d.dy,
+      fair_value:d.fv,
+      margin_of_safety:d.mos,
+      score:d.score,
+      recommendation:d.rec,
+      official_price:true,
+      financial_data_official:true,
+      financial_model:c.type==='bank'?'bank':'operating-company',
+      financial_period:c.period,
+      financial_data_currency:'AED',
+      status:'official-price',
+      quality_status:c.type==='bank'?'سعر رسمي + بيانات مالية مصرفية':'سعر رسمي + بيانات مالية مدققة',
+      source_label:c.source,
+      financial_imported_at:new Date().toISOString()
+    };
+  }
+
+  localStorage.setItem('uaeOfficialMarketData',JSON.stringify(map));
+  document.getElementById('status').innerHTML=
+    '<span class="good"><b>تمت إضافة بيانات الشركات الأربع بنجاح.</b></span> افتح الوكيل أو حدّث صفحته.';
+}
+
+renderCards();
+</script>
+</body>
+</html>
