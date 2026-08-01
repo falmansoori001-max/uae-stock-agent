@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إضافة بيانات أدنوك للتوزيع</title>
+<style>
+:root{--bg:#07101d;--card:#111d30;--line:#293b59;--text:#eef5ff;--muted:#9fb1c9;--green:#4de0a1;--yellow:#ffd166;--red:#ff7474}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#050b14,#0c1930);font-family:Arial,Tahoma,sans-serif;color:var(--text);padding:22px}
+.card{width:min(820px,100%);background:rgba(17,29,48,.98);border:1px solid var(--line);border-radius:20px;padding:24px}
+h1{margin-top:0}.note{color:var(--muted);line-height:1.8}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.box{background:#172640;border:1px solid var(--line);border-radius:14px;padding:14px}.k{font-size:12px;color:var(--muted)}.v{font-size:20px;font-weight:bold;margin-top:6px}
+button,a{display:inline-block;border:0;border-radius:12px;padding:13px 18px;font-weight:bold;text-decoration:none;cursor:pointer;font-size:15px}
+button{background:#2ab87f;color:#041b12}a{background:#172640;color:var(--text);border:1px solid var(--line);margin-right:8px}
+#status{margin-top:16px;padding:13px;border-radius:12px;background:#0d1728;color:var(--yellow)}
+.good{color:var(--green)}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>إضافة بيانات أدنوك للتوزيع إلى الوكيل</h1>
+  <div class="note">
+    يعتمد الملف على تقرير المراجعة والمعلومات المالية المرحلية لفترة التسعة أشهر المنتهية في
+    30 سبتمبر 2025. الأرقام السنوية للربحية وROE وROA تقديرية، عبر تحويل نتائج التسعة أشهر إلى سنة كاملة.
+  </div>
+
+  <div class="grid">
+    <div class="box"><div class="k">ربحية السهم السنوية التقديرية</div><div class="v" id="eps">—</div></div>
+    <div class="box"><div class="k">التدفق النقدي الحر</div><div class="v" id="fcf">—</div></div>
+    <div class="box"><div class="k">توزيعات السهم</div><div class="v" id="dividend">—</div></div>
+    <div class="box"><div class="k">القيمة الدفترية للسهم</div><div class="v" id="bvps">—</div></div>
+    <div class="box"><div class="k">القيمة العادلة التقديرية</div><div class="v" id="fair">—</div></div>
+    <div class="box"><div class="k">الدرجة وفق نموذج الوكيل</div><div class="v" id="score">—</div></div>
+  </div>
+
+  <button onclick="saveFinancials()">إضافة البيانات المالية</button>
+  <a href="./">فتح وكيل الأسهم</a>
+  <div id="status">لم تتم إضافة البيانات بعد.</div>
+</div>
+
+<script>
+const SHARES=12500000000;
+const EPS_9M=0.170;
+const EPS_ANNUALIZED=EPS_9M*4/3;
+const EQUITY_ATTRIBUTABLE=2555005000;
+const EQUITY_ATTRIBUTABLE_START=2991839000;
+const TOTAL_ASSETS=18393643000;
+const TOTAL_ASSETS_START=18180794000;
+const PROFIT_ATTRIBUTABLE_9M=2126189000;
+const PROFIT_TOTAL_9M=2167281000;
+const CURRENT_ASSETS=8175718000;
+const CURRENT_LIABILITIES=8204669000;
+const BORROWINGS=5498407000+78119000;
+const LEASE_LIABILITIES=1465225000+171472000;
+const OPERATING_CASH_FLOW=2790638000;
+const PPE_CAPEX=845142000;
+const CONTRACTOR_ADVANCES=24367000;
+const DIVIDENDS_DECLARED=2571250000;
+
+const BVPS=EQUITY_ATTRIBUTABLE/SHARES;
+const DIVIDEND_PER_SHARE=DIVIDENDS_DECLARED/SHARES;
+const ROE=(PROFIT_ATTRIBUTABLE_9M*4/3)/((EQUITY_ATTRIBUTABLE_START+EQUITY_ATTRIBUTABLE)/2)*100;
+const ROA=(PROFIT_TOTAL_9M*4/3)/((TOTAL_ASSETS_START+TOTAL_ASSETS)/2)*100;
+const CURRENT_RATIO=CURRENT_ASSETS/CURRENT_LIABILITIES;
+const TOTAL_DEBT=BORROWINGS+LEASE_LIABILITIES;
+const DEBT_TO_ASSETS=TOTAL_DEBT/TOTAL_ASSETS*100;
+const FREE_CASH_FLOW=OPERATING_CASH_FLOW-PPE_CAPEX-CONTRACTOR_ADVANCES;
+
+function fairValue(eps,bvps,targetPE,dividend){
+  const values=[];
+  if(eps>0&&bvps>0) values.push(Math.sqrt(22.5*eps*bvps));
+  if(eps>0&&targetPE>0) values.push(eps*targetPE);
+  if(dividend>0) values.push(dividend/0.05);
+  return values.reduce((a,b)=>a+b,0)/values.length;
+}
+const FAIR_VALUE=fairValue(EPS_ANNUALIZED,BVPS,15,DIVIDEND_PER_SHARE);
+
+function scoreStock(price){
+  const pe=price/EPS_ANNUALIZED;
+  const pb=price/BVPS;
+  const dividendYield=DIVIDEND_PER_SHARE/price*100;
+  const margin=(FAIR_VALUE-price)/FAIR_VALUE*100;
+  let score=0;
+  score += ROE>=15?18:ROE>=10?12:ROE>0?6:0;
+  score += ROA>=7?10:ROA>=3?6:0;
+  score += pe<=15?15:pe<=22?9:3;
+  score += pb<=2?8:pb<=3?5:2;
+  score += CURRENT_RATIO>=1.5?8:CURRENT_RATIO>=1?5:0;
+  score += DEBT_TO_ASSETS<=35?8:DEBT_TO_ASSETS<=55?4:0;
+  score += FREE_CASH_FLOW>0?8:0;
+  score += dividendYield>=5?8:dividendYield>=3?5:0;
+  score += margin>=20?9:margin>=10?6:margin>=0?3:0;
+  return Math.min(100,Math.round(score));
+}
+function recommendation(score,margin){
+  if(score>=85&&margin>=15)return 'شراء قوي';
+  if(score>=75&&margin>=5)return 'شراء تدريجي';
+  if(score>=65)return 'احتفاظ';
+  if(score>=50)return 'مراقبة';
+  return 'تجنب / تخفيض';
+}
+
+function existingMap(){
+  try{return JSON.parse(localStorage.getItem('uaeOfficialMarketData')||'{}')}
+  catch{return {}}
+}
+function currentPrice(){
+  const existing=existingMap().ADNOCDIST||{};
+  return Number(existing.price)||4.00;
+}
+function preview(){
+  const price=currentPrice();
+  const score=scoreStock(price);
+  document.getElementById('eps').textContent=EPS_ANNUALIZED.toFixed(3)+' درهم';
+  document.getElementById('fcf').textContent=(FREE_CASH_FLOW/1e9).toFixed(2)+' مليار';
+  document.getElementById('dividend').textContent=DIVIDEND_PER_SHARE.toFixed(4)+' درهم';
+  document.getElementById('bvps').textContent=BVPS.toFixed(4)+' درهم';
+  document.getElementById('fair').textContent=FAIR_VALUE.toFixed(3)+' درهم';
+  document.getElementById('score').textContent=score+'/100';
+}
+function saveFinancials(){
+  const map=existingMap();
+  const previous=map.ADNOCDIST||{};
+  const price=Number(previous.price)||4.00;
+  const pe=price/EPS_ANNUALIZED;
+  const pb=price/BVPS;
+  const dividendYield=DIVIDEND_PER_SHARE/price*100;
+  const margin=(FAIR_VALUE-price)/FAIR_VALUE*100;
+  const score=scoreStock(price);
+
+  map.ADNOCDIST={
+    ...previous,
+    code:'ADNOCDIST',
+    market:'ADX',
+    price,
+    eps:EPS_ANNUALIZED,
+    eps_reported_9m:EPS_9M,
+    book_value_per_share:BVPS,
+    pe,
+    pb,
+    roe:ROE,
+    roa:ROA,
+    current_ratio:CURRENT_RATIO,
+    total_debt:TOTAL_DEBT,
+    total_assets:TOTAL_ASSETS,
+    debt_to_assets:DEBT_TO_ASSETS,
+    free_cash_flow:FREE_CASH_FLOW,
+    dividend_per_share:DIVIDEND_PER_SHARE,
+    dividend_yield:dividendYield,
+    fair_value:FAIR_VALUE,
+    margin_of_safety:margin,
+    score,
+    recommendation:recommendation(score,margin),
+    official_price:true,
+    financial_data_official:true,
+    financial_period:'9M ended 30 September 2025',
+    financial_basis:'Reviewed interim report; annualized estimates used for EPS, ROE and ROA',
+    status:'official-price',
+    quality_status:'سعر رسمي + بيانات مالية مرحلية',
+    source_label:'ADX + تقرير مالي رسمي 9M 2025',
+    financial_imported_at:new Date().toISOString()
+  };
+
+  localStorage.setItem('uaeOfficialMarketData',JSON.stringify(map));
+  document.getElementById('status').innerHTML=
+    '<span class="good"><b>تمت إضافة البيانات بنجاح.</b></span> افتح وكيل الأسهم أو حدّث صفحته.';
+}
+preview();
+</script>
+</body>
+</html>
