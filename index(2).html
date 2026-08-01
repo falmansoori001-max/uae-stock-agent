@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>وكيل أسهم الإمارات — Official First</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+:root{--bg:#07101d;--card:#111d30;--card2:#172640;--line:#293b59;--text:#eef5ff;--muted:#9fb1c9;--green:#4de0a1;--yellow:#ffd166;--red:#ff7474;--blue:#72b7ff}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#050b14,#0c1930);font-family:Arial,Tahoma,sans-serif;color:var(--text)}
+.wrap{max-width:1380px;margin:auto;padding:24px}
+.head{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+h1{margin:0}.sub,.note{color:var(--muted);line-height:1.7}
+.pill{padding:8px 13px;border-radius:99px;background:#12382e;color:#7ef0bd;font-weight:bold}
+.toolbar{display:grid;grid-template-columns:2fr 1fr 1fr auto auto auto;gap:10px;margin:20px 0}
+input,select,button{border:1px solid var(--line);border-radius:12px;padding:12px;background:#0d1728;color:var(--text);font-size:15px}
+button{background:#2ab87f;color:#041b12;border:0;font-weight:bold;cursor:pointer}
+.secondary{background:#172640;color:var(--text);border:1px solid var(--line)}
+.official{background:#183252;color:#ddecff;border:1px solid #315886}
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:16px}
+.card{background:rgba(17,29,48,.96);border:1px solid var(--line);border-radius:17px;padding:16px}
+.k{color:var(--muted);font-size:12px}.v{font-size:23px;font-weight:bold;margin-top:8px}
+.panel{background:rgba(17,29,48,.96);border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:14px;overflow:auto}
+.import-panel{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center}
+table{width:100%;border-collapse:collapse;min-width:1200px}
+th,td{padding:12px 9px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:right}
+th{font-size:12px;color:#b7c6d9;position:sticky;top:0;background:#111d30}
+.good{color:var(--green)}.warn{color:var(--yellow)}.bad{color:var(--red)}.blue{color:var(--blue)}
+.small{font-size:12px}.source-tag{padding:5px 8px;border-radius:99px;background:#1b2c47;font-size:11px;color:#cfe3ff}
+@media(max-width:1100px){.toolbar{grid-template-columns:1fr 1fr 1fr}.cards{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:700px){.toolbar,.cards,.import-panel{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div>
+      <h1>وكيل أسهم الإمارات</h1>
+      <div class="sub">Official First — استيراد ملفات ADX وDFM الرسمية ومعالجتها محلياً</div>
+    </div>
+    <div class="pill">Phase 2</div>
+  </div>
+
+  <section class="panel">
+    <div class="import-panel">
+      <div>
+        <b>استيراد ملف السوق الرسمي</b>
+        <div class="note small">حمّل Excel أو CSV من السوق، ثم ارفعه هنا. تتم المعالجة داخل متصفحك ولا يُرفع الملف إلى خادم.</div>
+      </div>
+      <input id="officialFile" type="file" accept=".xlsx,.xls,.csv" hidden>
+      <button class="official" onclick="document.getElementById('officialFile').click()">رفع ملف ADX / DFM</button>
+      <button class="secondary" onclick="clearOfficialData()">مسح البيانات الرسمية المحلية</button>
+    </div>
+    <div id="importStatus" class="note" style="margin-top:10px">لا يوجد ملف رسمي مستورد في هذا المتصفح.</div>
+  </section>
+
+  <div class="toolbar">
+    <input id="q" placeholder="اكتب اسم الشركة أو الرمز">
+    <select id="market"><option value="">كل الأسواق</option><option>ADX</option><option>DFM</option></select>
+    <select id="rec"><option value="">كل التوصيات</option><option>شراء قوي</option><option>شراء تدريجي</option><option>احتفاظ</option><option>مراقبة</option><option>تجنب / تخفيض</option><option>تحتاج بيانات مالية رسمية</option></select>
+    <button class="secondary" id="availabilityBtn" onclick="toggleUnavailable()">إظهار جميع الأسهم</button>
+    <button class="secondary" onclick="exportOfficialCSV()">تصدير الرسمي CSV</button>
+    <button onclick="load()">تحديث العرض</button>
+  </div>
+
+  <div id="viewStatus" class="note">يعرض حالياً الأسهم ذات البيانات المتاحة فقط.</div>
+
+  <div class="cards">
+    <div class="card"><div class="k">المتاح للتحليل</div><div class="v" id="count">—</div></div>
+    <div class="card"><div class="k">أسعار رسمية مستوردة</div><div class="v" id="officialCount">—</div></div>
+    <div class="card"><div class="k">أفضل درجة</div><div class="v" id="bestScore">—</div></div>
+    <div class="card"><div class="k">أفضل هامش أمان</div><div class="v" id="bestMos">—</div></div>
+    <div class="card"><div class="k">شراء قوي/تدريجي</div><div class="v" id="buys">—</div></div>
+    <div class="card"><div class="k">آخر تحديث آلي</div><div class="v small" id="updated">—</div></div>
+  </div>
+
+  <div class="panel">
+    <div id="message" class="note">جاري تحميل البيانات…</div>
+    <table>
+      <thead><tr>
+        <th>الرمز</th><th>الشركة</th><th>السوق</th><th>السعر</th><th>التغير</th>
+        <th>P/E</th><th>P/B</th><th>ROE</th><th>ROA</th><th>العائد</th>
+        <th>القيمة العادلة</th><th>هامش الأمان</th><th>الدرجة</th><th>التوصية</th><th>المصدر</th><th>الحالة</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <p class="note">
+    ملف السوق الرسمي يحدّث السعر وبيانات التداول المتاحة في الملف. المؤشرات المالية والقيمة العادلة تحتاج أيضاً إلى قوائم مالية رسمية؛
+    لذلك لا يعرض الوكيل توصية مكتملة عندما لا تتوفر بيانات مالية كافية.
+  </p>
+</div>
+
+<script>
+let all=[];
+let showUnavailable=false;
+let officialMap={};
+
+const CODE_ALIASES={
+  EMIRATESNBD:'ENBD',
+  EMIRATESNBD:'ENBD',
+  DU:'DU', EMAAR:'EMAAR', DIB:'DIB', DEWA:'DEWA', SALIK:'SALIK', PARKIN:'PARKIN',
+  AMAN:'AMAN', ADIB:'ADIB', EAND:'EAND', ADNOCGAS:'ADNOCGAS', ADNOCDRILL:'ADNOCDRILL',
+  ADNOCLS:'ADNOCLS', ADPORTS:'ADPORTS', BOROUGE:'BOROUGE', BURJEEL:'BURJEEL',
+  FERTIGLOBE:'FERTIGLOBE', LULU:'LULU', NMDCENR:'NMDCENR', PUREHEALTH:'PUREHEALTH',
+  SPACE42:'SPACE42', TAQA:'TAQA', ADNOCDIST:'ADNOCDIST', AGTHIA:'AGTHIA',
+  EMSTEEL:'EMSTEEL', APEX:'APEX', ALDAR:'ALDAR', FAB:'FAB', ADCB:'ADCB'
+};
+
+const n=(v,d=2)=>v===null||v===undefined||v===''||Number.isNaN(Number(v))?'—':Number(v).toLocaleString('en-US',{maximumFractionDigits:d});
+const p=v=>v===null||v===undefined||v===''?'—':n(v,2)+'%';
+const cls=r=>r==='شراء قوي'||r==='شراء تدريجي'?'good':r==='تجنب / تخفيض'||r==='بيانات غير موثوقة'?'bad':'warn';
+const isAvailable=x=>x.status==='ok'||x.status==='official-price';
+
+function toNumber(value){
+  if(value===null||value===undefined||value==='') return null;
+  let cleaned=String(value).trim();
+  const negative=/^\(.*\)$/.test(cleaned);
+  cleaned=cleaned.replace(/[\s,\u00A0]/g,'').replace(/[%()]/g,'');
+  const v=Number(cleaned);
+  if(!Number.isFinite(v)) return null;
+  return negative?-v:v;
+}
+
+function normalizeKey(k){
+  return String(k||'').toLowerCase().replace(/[\s_\-/%().:]+/g,'');
+}
+
+function pick(row, aliases){
+  const keys=Object.keys(row);
+  for(const alias of aliases){
+    const norm=normalizeKey(alias);
+    const found=keys.find(k=>normalizeKey(k)===norm || normalizeKey(k).includes(norm));
+    if(found!==undefined && row[found]!=='' && row[found]!==null && row[found]!==undefined) return row[found];
+  }
+  return null;
+}
+
+function parseSymbol(raw){
+  if(raw===null||raw===undefined) return null;
+  let s=String(raw).trim().toUpperCase();
+  if(s.includes('-')) s=s.split('-')[0].trim();
+  s=s.replace(/\s+/g,'').replace(/\.AE$|\.AB$/,'');
+  return CODE_ALIASES[s]||s;
+}
+
+function detectMarket(fileName, rows){
+  const text=(fileName+' '+JSON.stringify(rows.slice(0,3))).toUpperCase();
+  if(text.includes('DFM')||text.includes('CURRENT CLOSE')||text.includes('SYMBOL - SECURITY NAME')) return 'DFM';
+  if(text.includes('ADX')||text.includes('ABU DHABI')) return 'ADX';
+  return '';
+}
+
+function calculateDerived(x){
+  if(x.price!=null && x.eps!=null && x.eps>0) x.pe=x.price/x.eps;
+  if(x.price!=null && x.book_value_per_share!=null && x.book_value_per_share>0) x.pb=x.price/x.book_value_per_share;
+  if(x.price!=null && x.dividend_per_share!=null && x.price>0) x.dividend_yield=x.dividend_per_share/x.price*100;
+  if(x.price!=null && x.fair_value!=null && x.fair_value>0) x.margin_of_safety=(x.fair_value-x.price)/x.fair_value*100;
+
+  const financialCount=['eps','book_value_per_share','roe','roa','free_cash_flow','dividend_per_share']
+    .filter(k=>x[k]!==null&&x[k]!==undefined).length;
+
+  if(x.official_price && financialCount<2){
+    x.score=null;
+    x.recommendation='تحتاج بيانات مالية رسمية';
+  }
+  return x;
+}
+
+function applyOfficialData(){
+  all=all.map(stock=>{
+    const official=officialMap[stock.code];
+    if(!official) return stock;
+    const merged={...stock,...official};
+    merged.official_price=true;
+    merged.status='official-price';
+    merged.quality_status='رسمي';
+    merged.source_label=official.source_label;
+    return calculateDerived(merged);
+  });
+}
+
+async function load(){
+  try{
+    const res=await fetch('data/stocks.json?ts='+Date.now());
+    if(!res.ok) throw Error('تعذر تحميل ملف البيانات');
+    const data=await res.json();
+    all=data.stocks||[];
+    officialMap=JSON.parse(localStorage.getItem('uaeOfficialMarketData')||'{}');
+    applyOfficialData();
+    document.getElementById('updated').textContent=data.updated_at?new Date(data.updated_at).toLocaleString('ar-AE'):'لم يُشغّل التحديث بعد';
+    updateImportStatus();
+    render();
+  }catch(e){
+    document.getElementById('message').textContent='تعذر تحميل البيانات الأساسية: '+e.message;
+  }
+}
+
+function toggleUnavailable(){
+  showUnavailable=!showUnavailable;
+  document.getElementById('availabilityBtn').textContent=showUnavailable?'إخفاء غير المتوفر':'إظهار جميع الأسهم';
+  document.getElementById('viewStatus').textContent=showUnavailable
+    ?'يعرض حالياً جميع الأسهم، بما فيها غير المتوفر.'
+    :'يعرض حالياً الأسهم ذات البيانات المتاحة فقط.';
+  render();
+}
+
+function render(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const m=document.getElementById('market').value;
+  const r=document.getElementById('rec').value;
+
+  let a=all.filter(x=>
+    (showUnavailable||isAvailable(x)) &&
+    (!q||[x.code,x.symbol,x.name_ar,x.company_name].join(' ').toLowerCase().includes(q)) &&
+    (!m||x.market===m) &&
+    (!r||x.recommendation===r)
+  );
+
+  a.sort((x,y)=>(y.score??-1)-(x.score??-1));
+
+  document.getElementById('rows').innerHTML=a.map(x=>{
+    const source=x.source_label||'مصدر آلي غير رسمي';
+    const change=x.official_change_pct;
+    return `<tr>
+      <td><b>${x.code}</b></td>
+      <td>${x.name_ar||x.company_name||'—'}</td>
+      <td>${x.market}</td>
+      <td>${n(x.price,4)}</td>
+      <td class="${change>0?'good':change<0?'bad':''}">${p(change)}</td>
+      <td>${n(x.pe)}</td><td>${n(x.pb)}</td><td>${p(x.roe)}</td><td>${p(x.roa)}</td>
+      <td>${p(x.dividend_yield)}</td><td>${n(x.fair_value,4)}</td><td>${p(x.margin_of_safety)}</td>
+      <td>${n(x.score,0)}</td>
+      <td class="${cls(x.recommendation)}"><b>${x.recommendation||'—'}</b></td>
+      <td><span class="source-tag">${source}</span></td>
+      <td>${x.status||'—'}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('message').textContent=a.length?'':'لا توجد نتائج مطابقة.';
+  const ok=all.filter(isAvailable);
+  const official=all.filter(x=>x.official_price);
+  document.getElementById('count').textContent=ok.length+'/'+all.length;
+  document.getElementById('officialCount').textContent=official.length;
+  const scores=ok.map(x=>x.score).filter(x=>x!=null);
+  const mos=ok.map(x=>x.margin_of_safety).filter(x=>x!=null);
+  document.getElementById('bestScore').textContent=scores.length?Math.max(...scores)+'/100':'—';
+  document.getElementById('bestMos').textContent=mos.length?p(Math.max(...mos)):'—';
+  document.getElementById('buys').textContent=ok.filter(x=>['شراء قوي','شراء تدريجي'].includes(x.recommendation)).length;
+}
+
+async function handleOfficialFile(file){
+  if(!file) return;
+  try{
+    document.getElementById('importStatus').textContent='جاري قراءة الملف الرسمي…';
+    const buffer=await file.arrayBuffer();
+    const workbook=XLSX.read(buffer,{type:'array',cellDates:false});
+    const sheet=workbook.Sheets[workbook.SheetNames[0]];
+
+    // ملفات ADX تبدأ عادةً بعدة صفوف تلخيصية قبل صف عناوين جدول الشركات.
+    // لذلك نقرأ الورقة كمصفوفة ونبحث عن صف يحتوي LC_CODE وCLOSE_PRICE.
+    const matrix=XLSX.utils.sheet_to_json(sheet,{header:1,defval:'',raw:false,blankrows:true});
+    if(!matrix.length) throw Error('الملف لا يحتوي على صفوف قابلة للقراءة');
+
+    const symbolHeaders=['LC_CODE','Symbol - Security Name','Symbol','Security Symbol','Ticker','Code','الرمز','رمز السهم'];
+    const priceHeaders=['CLOSE_PRICE','Current Close','Closing Price','Close Price','Close','Price','Last Price','سعر الإغلاق','الإغلاق','السعر الحالي','آخر سعر'];
+    const headerIndex=matrix.findIndex(row=>{
+      const normalized=(row||[]).map(normalizeKey);
+      const hasSymbol=symbolHeaders.some(h=>normalized.includes(normalizeKey(h)));
+      const hasPrice=priceHeaders.some(h=>normalized.includes(normalizeKey(h)));
+      return hasSymbol&&hasPrice;
+    });
+
+    if(headerIndex<0) throw Error('لم أجد صف عناوين يحتوي على الرمز وسعر الإغلاق');
+
+    const headers=matrix[headerIndex].map(v=>String(v||'').trim());
+    const rows=matrix.slice(headerIndex+1).map(values=>{
+      const obj={};
+      headers.forEach((h,i)=>{if(h)obj[h]=values?.[i]??'';});
+      return obj;
+    });
+
+    const market=detectMarket(file.name,matrix.slice(0,Math.min(headerIndex+2,15)));
+    const imported={};
+    let accepted=0;
+
+    for(const row of rows){
+      const symbolRaw=pick(row,[
+        'LC_CODE','Symbol - Security Name','Symbol','Security Symbol','Ticker','Code',
+        'الرمز','رمز السهم','رمز الورقة المالية'
+      ]);
+      const code=parseSymbol(symbolRaw);
+      if(!code||code==='LCCODE1') continue;
+
+      const price=toNumber(pick(row,[
+        'CLOSE_PRICE','Current Close','Closing Price','Close Price','Close','Price','Last Price',
+        'سعر الإغلاق','الإغلاق','السعر الحالي','آخر سعر'
+      ]));
+      if(price===null||price<=0||price>500) continue;
+
+      const netChange=toNumber(pick(row,['AVERAGE_NET_CHANGE','Net Change','Change','التغير','صافي التغير']));
+      const changePct=toNumber(pick(row,['AVERAGE_PERCENT_CHANGE','Change %','Change%','Percentage Change','نسبة التغير','التغير %']));
+      let previousClose=toNumber(pick(row,['PREVIOUS_CLOSE','Previous Close','Prev Close','الإغلاق السابق']));
+      if(previousClose===null&&netChange!==null) previousClose=price-netChange;
+
+      const detectedMarket=market || (all.find(x=>x.code===code)?.market||'ADX');
+      const sourceLabel=detectedMarket==='DFM'?'DFM — ملف رسمي':'ADX — ملف رسمي';
+
+      imported[code]={
+        code,
+        company_name_official:pick(row,['LC_NAME','Security Name','Company Name','اسم الشركة']),
+        market:detectedMarket,
+        price,
+        previous_close:previousClose,
+        open:toNumber(pick(row,['OPEN_PRICE','Open','Open Price','الافتتاح'])),
+        high:toNumber(pick(row,['HIGH_PRICE','High','High Price','أعلى سعر'])),
+        low:toNumber(pick(row,['LOW_PRICE','Low','Low Price','أدنى سعر'])),
+        official_net_change:netChange,
+        official_change_pct:changePct,
+        trade_volume:toNumber(pick(row,['TRADE_VOLUME','Trade Volume','Volume','حجم التداول'])),
+        trade_value:toNumber(pick(row,['TRADE_VALUE','Trade Value','Value','قيمة التداول'])),
+        trade_count:toNumber(pick(row,['TRADE_COUNT','Trades Count','Number of Trades','عدد الصفقات'])),
+        total_shares:toNumber(pick(row,['TOTAL_SHARES','Total Shares','عدد الأسهم'])),
+        paid_up_capital:toNumber(pick(row,['PAID_UP_CAPITAL','Paid Up Capital','رأس المال المدفوع'])),
+        market_cap:toNumber(pick(row,['MARKET_CAPITAL','Market Capitalization','Market Cap','القيمة السوقية'])),
+        official_date:new Date().toISOString(),
+        source_label:sourceLabel,
+        imported_file:file.name,
+        imported_at:new Date().toISOString()
+      };
+      accepted++;
+    }
+
+    if(!accepted) throw Error('وجدت عناوين الجدول، لكن لم أجد أسعاراً صالحة للاستيراد');
+
+    officialMap={...officialMap,...imported};
+    localStorage.setItem('uaeOfficialMarketData',JSON.stringify(officialMap));
+    const tracked=Object.keys(imported).filter(code=>all.some(x=>x.code===code)).length;
+    document.getElementById('importStatus').textContent=`تم استيراد ${accepted} ورقة مالية من ${file.name}، منها ${tracked} شركة موجودة في قائمة الوكيل.`;
+    await load();
+  }catch(e){
+    document.getElementById('importStatus').textContent='فشل الاستيراد: '+e.message;
+  }finally{
+    document.getElementById('officialFile').value='';
+  }
+}
+
+function updateImportStatus(){
+  const values=Object.values(officialMap);
+  if(!values.length){
+    document.getElementById('importStatus').textContent='لا يوجد ملف رسمي مستورد في هذا المتصفح.';
+    return;
+  }
+  const last=values.map(x=>x.imported_at).filter(Boolean).sort().pop();
+  document.getElementById('importStatus').textContent=
+    `مخزن محلياً ${values.length} سعر رسمي. آخر استيراد: ${last?new Date(last).toLocaleString('ar-AE'):'—'}.`;
+}
+
+function clearOfficialData(){
+  if(!confirm('هل تريد مسح جميع البيانات الرسمية المستوردة من هذا المتصفح؟')) return;
+  localStorage.removeItem('uaeOfficialMarketData');
+  officialMap={};
+  load();
+}
+
+function exportOfficialCSV(){
+  const values=Object.values(officialMap);
+  if(!values.length){alert('لا توجد بيانات رسمية للتصدير.');return;}
+  const headers=['code','market','price','previous_close','open','high','low','official_change_pct','trade_volume','trade_value','market_cap','official_date','source_label'];
+  const lines=[headers.join(',')];
+  for(const row of values){
+    lines.push(headers.map(h=>`"${String(row[h]??'').replaceAll('"','""')}"`).join(','));
+  }
+  const blob=new Blob(['\uFEFF'+lines.join('\n')],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='official-uae-market-data.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+document.getElementById('officialFile').addEventListener('change',e=>handleOfficialFile(e.target.files[0]));
+document.getElementById('q').addEventListener('input',render);
+document.getElementById('market').addEventListener('change',render);
+document.getElementById('rec').addEventListener('change',render);
+load();
+</script>
+</body>
+</html>
