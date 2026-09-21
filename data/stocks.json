@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-20T16:28:38.556247+00:00",
+  "updated_at": "2026-09-21T18:19:10.469899+00:00",
   "source": "Yahoo Finance public market pages via yfinance (unofficial)",
   "note_ar": "شغّل تحديث البيانات من GitHub Actions. قد لا تتوفر بعض المؤشرات أو الرموز.",
   "stocks": [
@@ -32,7 +32,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "مصرف أبوظبي الإسلامي",
-      "data_timestamp": "2026-09-20T16:28:17.884756+00:00",
+      "data_timestamp": "2026-09-21T18:18:38.903762+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -65,7 +65,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إي آند",
-      "data_timestamp": "2026-09-20T16:28:18.640544+00:00",
+      "data_timestamp": "2026-09-21T18:18:40.075754+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -98,7 +98,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للغاز",
-      "data_timestamp": "2026-09-20T16:28:19.395564+00:00",
+      "data_timestamp": "2026-09-21T18:18:41.238533+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -131,7 +131,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للحفر",
-      "data_timestamp": "2026-09-20T16:28:20.175788+00:00",
+      "data_timestamp": "2026-09-21T18:18:42.303393+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -164,7 +164,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للإمداد والخدمات",
-      "data_timestamp": "2026-09-20T16:28:20.886095+00:00",
+      "data_timestamp": "2026-09-21T18:18:43.597953+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -197,7 +197,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "مجموعة موانئ أبوظبي",
-      "data_timestamp": "2026-09-20T16:28:21.641220+00:00",
+      "data_timestamp": "2026-09-21T18:18:44.813598+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -230,7 +230,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بروج",
-      "data_timestamp": "2026-09-20T16:28:22.458263+00:00",
+      "data_timestamp": "2026-09-21T18:18:46.032565+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -263,7 +263,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "برجيل القابضة",
-      "data_timestamp": "2026-09-20T16:28:23.208720+00:00",
+      "data_timestamp": "2026-09-21T18:18:47.289731+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -296,7 +296,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "فيرتيغلوب",
-      "data_timestamp": "2026-09-20T16:28:24.019251+00:00",
+      "data_timestamp": "2026-09-21T18:18:48.482270+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -329,7 +329,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "لولو للتجزئة",
-      "data_timestamp": "2026-09-20T16:28:24.746657+00:00",
+      "data_timestamp": "2026-09-21T18:18:49.851575+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -362,7 +362,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إن إم دي سي إنرجي",
-      "data_timestamp": "2026-09-20T16:28:25.470891+00:00",
+      "data_timestamp": "2026-09-21T18:18:51.201615+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -395,7 +395,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بيورهيلث",
-      "data_timestamp": "2026-09-20T16:28:26.266415+00:00",
+      "data_timestamp": "2026-09-21T18:18:52.355354+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -428,7 +428,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "سبيس 42",
-      "data_timestamp": "2026-09-20T16:28:27.084247+00:00",
+      "data_timestamp": "2026-09-21T18:18:53.575783+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -461,7 +461,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "طاقة",
-      "data_timestamp": "2026-09-20T16:28:27.858622+00:00",
+      "data_timestamp": "2026-09-21T18:18:54.698781+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -494,7 +494,7 @@
       "fair_value": 12.603427650242763,
       "margin_of_safety": 5.263866851570211,
       "company_name": "Emirates Integrated Telecommunications Company PJSC",
-      "data_timestamp": "2026-09-20T16:28:28.480828+00:00",
+      "data_timestamp": "2026-09-21T18:18:55.542704+00:00",
       "score": 64,
       "recommendation": "مراقبة"
     },
@@ -527,7 +527,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أدنوك للتوزيع",
-      "data_timestamp": "2026-09-20T16:28:29.271638+00:00",
+      "data_timestamp": "2026-09-21T18:18:56.767550+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -566,7 +566,7 @@
       "score": null,
       "recommendation": "بيانات غير موثوقة",
       "company_name": "أغذية",
-      "data_timestamp": "2026-09-20T16:28:29.879087+00:00"
+      "data_timestamp": "2026-09-21T18:18:57.627764+00:00"
     },
     {
       "symbol": "EMSTEEL.AE",
@@ -597,7 +597,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "إمستيل",
-      "data_timestamp": "2026-09-20T16:28:30.592141+00:00",
+      "data_timestamp": "2026-09-21T18:18:58.890865+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -611,13 +611,13 @@
       "status": "ok",
       "quality_status": "مقبول",
       "quality_errors": [],
-      "price": 0.572,
+      "price": 0.544,
       "currency": "AED",
-      "market_cap": 129129008.0,
+      "market_cap": 122808008.0,
       "eps": 0.05,
       "book_value_per_share": 0.217,
-      "pe": 11.440001,
-      "pb": 2.6359448,
+      "pe": 10.88,
+      "pb": 2.5069127,
       "roe": 27.644999999999996,
       "roa": 0.58999998,
       "current_ratio": 0.988,
@@ -628,11 +628,11 @@
       "dividend_per_share": 0.0,
       "dividend_yield": null,
       "fair_value": 0.6220450363800091,
-      "margin_of_safety": 8.045243262649631,
+      "margin_of_safety": 12.546525060981454,
       "company_name": "Dubai Islamic Insurance & Reinsurance Co. (Aman) (P.J.S.C)",
-      "data_timestamp": "2026-09-20T16:28:31.246784+00:00",
-      "score": 49,
-      "recommendation": "تجنب / تخفيض"
+      "data_timestamp": "2026-09-21T18:18:59.742136+00:00",
+      "score": 52,
+      "recommendation": "مراقبة"
     },
     {
       "symbol": "APEX.AE",
@@ -663,7 +663,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "أبيكس للاستثمار",
-      "data_timestamp": "2026-09-20T16:28:32.017809+00:00",
+      "data_timestamp": "2026-09-21T18:19:01.047651+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -677,13 +677,13 @@
       "status": "ok",
       "quality_status": "مقبول",
       "quality_errors": [],
-      "price": 11.62,
+      "price": 11.54,
       "currency": "AED",
-      "market_cap": 102706741248.0,
+      "market_cap": 101999640576.0,
       "eps": 2.17,
       "book_value_per_share": 10.621,
-      "pe": 5.3548384,
-      "pb": 1.0940589,
+      "pe": 5.317972,
+      "pb": 1.0865266,
       "roe": 24.211,
       "roa": 8.402,
       "current_ratio": 7.661,
@@ -694,9 +694,9 @@
       "dividend_per_share": 1.0,
       "dividend_yield": 8.61,
       "fair_value": 25.107379742524557,
-      "margin_of_safety": 53.71878659118252,
+      "margin_of_safety": 54.037418008799165,
       "company_name": "Emaar Properties PJSC",
-      "data_timestamp": "2026-09-20T16:28:32.619711+00:00",
+      "data_timestamp": "2026-09-21T18:19:01.947149+00:00",
       "score": 84,
       "recommendation": "شراء تدريجي"
     },
@@ -729,7 +729,7 @@
       "fair_value": 2.8626785107312736,
       "margin_of_safety": -86.88790864725281,
       "company_name": "Salik Company P.J.S.C.",
-      "data_timestamp": "2026-09-20T16:28:33.194617+00:00",
+      "data_timestamp": "2026-09-21T18:19:02.856265+00:00",
       "score": 46,
       "recommendation": "تجنب / تخفيض"
     },
@@ -762,7 +762,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "الإمارات دبي الوطني",
-      "data_timestamp": "2026-09-20T16:28:34.166562+00:00",
+      "data_timestamp": "2026-09-21T18:19:04.234751+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -776,13 +776,13 @@
       "status": "ok",
       "quality_status": "مقبول",
       "quality_errors": [],
-      "price": 7.24,
+      "price": 7.31,
       "currency": "AED",
-      "market_cap": 52324282368.0,
+      "market_cap": 52830179328.0,
       "eps": 0.99,
       "book_value_per_share": 5.989,
-      "pe": 7.313131,
-      "pb": 1.2088829,
+      "pe": 7.383838,
+      "pb": 1.220571,
       "roe": 15.018,
       "roa": 1.9619999999999997,
       "current_ratio": null,
@@ -793,9 +793,9 @@
       "dividend_per_share": 0.35,
       "dividend_yield": 4.83,
       "fair_value": 11.133369047453398,
-      "margin_of_safety": 34.970268486195124,
+      "margin_of_safety": 34.34152798813348,
       "company_name": "Dubai Islamic Bank P.J.S.C.",
-      "data_timestamp": "2026-09-20T16:28:34.828690+00:00",
+      "data_timestamp": "2026-09-21T18:19:05.142979+00:00",
       "score": 55,
       "recommendation": "مراقبة"
     },
@@ -828,7 +828,7 @@
       "fair_value": 2.5825814410013392,
       "margin_of_safety": -5.32097678768186,
       "company_name": "Dubai Electricity and Water Authority (PJSC)",
-      "data_timestamp": "2026-09-20T16:28:35.413903+00:00",
+      "data_timestamp": "2026-09-21T18:19:05.992439+00:00",
       "score": 48,
       "recommendation": "تجنب / تخفيض"
     },
@@ -842,13 +842,13 @@
       "status": "ok",
       "quality_status": "مقبول",
       "quality_errors": [],
-      "price": 6.15,
+      "price": 6.09,
       "currency": "AED",
-      "market_cap": 18446538752.0,
+      "market_cap": 18266572800.0,
       "eps": 0.23,
       "book_value_per_share": 0.173,
-      "pe": 26.73913,
-      "pb": 35.549133,
+      "pe": 26.478262,
+      "pb": 35.202316,
       "roe": 138.12699,
       "roa": 20.702,
       "current_ratio": 1.285,
@@ -859,9 +859,9 @@
       "dividend_per_share": 0.22,
       "dividend_yield": 3.55,
       "fair_value": 2.9320632424248694,
-      "margin_of_safety": -109.7499095863239,
+      "margin_of_safety": -107.7035690049939,
       "company_name": "Parkin Company P.J.S.C.",
-      "data_timestamp": "2026-09-20T16:28:36.048526+00:00",
+      "data_timestamp": "2026-09-21T18:19:06.792239+00:00",
       "score": 51,
       "recommendation": "مراقبة"
     },
@@ -894,7 +894,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "الدار العقارية",
-      "data_timestamp": "2026-09-20T16:28:36.820046+00:00",
+      "data_timestamp": "2026-09-21T18:19:08.047799+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -927,7 +927,7 @@
       "fair_value": null,
       "margin_of_safety": null,
       "company_name": "بنك أبوظبي الأول",
-      "data_timestamp": "2026-09-20T16:28:37.548679+00:00",
+      "data_timestamp": "2026-09-21T18:19:09.293048+00:00",
       "score": null,
       "recommendation": "غير متوفر"
     },
@@ -966,7 +966,7 @@
       "score": null,
       "recommendation": "بيانات غير موثوقة",
       "company_name": "بنك أبوظبي التجاري",
-      "data_timestamp": "2026-09-20T16:28:38.206017+00:00"
+      "data_timestamp": "2026-09-21T18:19:10.119660+00:00"
     }
   ]
 }
